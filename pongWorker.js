@@ -1,6 +1,7 @@
 var queue = {};
 var workers = [];
 var ws = require('ws').Server;
+var config = require('./config');
 
 var log = function (msg, workerId) {
     if (typeof workerId === 'undefined') {
@@ -10,7 +11,7 @@ var log = function (msg, workerId) {
     console.log(now.toGMTString() + ' - ' + msg + ' (' + workerId + ')');
 };
 
-var wss = new ws({host: '127.0.0.1', port: 8081});
+var wss = new ws({host: '127.0.0.1', port: config.wsPort});
 wss.on('connection', function (ws) {
     var workerId = (workers.push(ws) - 1);
     log('New worker', workerId);

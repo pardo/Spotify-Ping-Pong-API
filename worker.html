@@ -6,7 +6,7 @@
         window.onload = function () {
             var spotifyPlayer = document.getElementById('spotifyPlayer');
 
-            var con = new WebSocket('ws://127.0.0.1:8081');
+            var con = new WebSocket('ws://127.0.0.1:WEBSOCKETPORT');
 
             con.onmessage = function (e) {
                 var ping = e.data;
@@ -43,6 +43,6 @@
     </script>
 </head>
 <body>
-<embed id="spotifyPlayer" src="//localhost:8080/player.swf" type="application/x-shockwave-flash"></embed>
+<embed id="spotifyPlayer" src="/player.swf" type="application/x-shockwave-flash"></embed>
 </body>
 </html>
